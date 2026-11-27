@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Historia de España: Siglo XIX (1808–1902) | 4º ESO</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23b45309' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='3' x2='21' y1='22' y2='22'/%3E%3Cline x1='6' x2='6' y1='18' y2='11'/%3E%3Cline x1='10' x2='10' y1='18' y2='11'/%3E%3Cline x1='14' x2='14' y1='18' y2='11'/%3E%3Cline x1='18' x2='18' y1='18' y2='11'/%3E%3Cpolygon points='12 2 20 7 4 7'/%3E%3C/svg%3E">
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            serif: ['Merriweather', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .quote-font { font-family: 'Merriweather', serif; }
+
+    @keyframes fadeInBlock {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in {
+      animation: fadeInBlock 0.3s ease-out forwards;
+    }
+
+    @media print {
+      body { background: #ffffff !important; color: #111827 !important; font-size: 11pt; }
+      .no-print, #progress-container, .video-link-btn { display: none !important; }
+      .dark body, .dark section, .dark div { background-color: #ffffff !important; color: #111827 !important; }
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300 antialiased selection:bg-amber-500 selection:text-white min-h-screen flex flex-col">
+
+  <!-- BARRA DE PROGRESO SUPERIOR -->
+  <div id="progress-container" class="fixed top-0 left-0 w-full h-1.5 bg-slate-200 dark:bg-slate-800 z-50 no-print">
+    <div id="reading-progress" class="h-full bg-gradient-to-r from-red-600 via-amber-500 to-indigo-600 transition-all duration-150" style="width: 0%;"></div>
+  </div>
+
+  <!-- CABECERA FIJA -->
+  <header class="sticky top-1.5 z-40 mx-2 sm:mx-4 lg:mx-8 mt-2 rounded-2xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-md shadow-lg border border-slate-200/80 dark:border-slate-800 no-print">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 py-2.5 flex flex-wrap items-center justify-between gap-2">
+      <!-- Identidad -->
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-red-700 via-amber-600 to-slate-900 text-white flex items-center justify-center shadow-md shrink-0">
+          <i class="fa-solid fa-landmark text-lg"></i>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 dark:bg-amber-900/60 dark:text-amber-300">4º ESO · Historia</span>
+            <span class="hidden md:inline-block text-xs text-slate-500 dark:text-slate-400 font-medium">Autor: <strong class="text-slate-700 dark:text-slate-200">Pedro J. Sirvent Sanz</strong></span>
+          </div>
+          <h1 class="text-sm sm:text-base font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight">
+            España en el Siglo XIX (1808–1902)
+          </h1>
+        </div>
+      </div>
+
+      <!-- Botones Superiores: Cronología, Glosario, Imprimir, Tema y Cambio Teoría/Test -->
+      <div class="flex flex-wrap items-center gap-1.5 sm:gap-2">
+        <button onclick="openModal('modal-timeline')" class="px-3 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-amber-50 hover:bg-amber-100 text-amber-800 dark:bg-amber-950/80 dark:hover:bg-amber-900 dark:text-amber-300 border border-amber-200/60 dark:border-amber-800 transition flex items-center gap-1.5 cursor-pointer" title="Abrir Línea del Tiempo 1808–1902">
+          <i class="fa-solid fa-timeline"></i>
+          <span class="hidden sm:inline">Cronología</span>
+        </button>
+
+        <button onclick="openModal('modal-glosario')" class="px-3 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-indigo-50 hover:bg-indigo-100 text-indigo-700 dark:bg-indigo-950/80 dark:hover:bg-indigo-900 dark:text-indigo-300 border border-indigo-200/60 dark:border-indigo-800 transition flex items-center gap-1.5 cursor-pointer" title="Abrir Glosario">
+          <i class="fa-solid fa-book-open"></i>
+          <span class="hidden sm:inline">Glosario</span>
+        </button>
+
+        <button onclick="window.print()" class="px-3 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-slate-100 hover:bg-slate-200 text-slate-700 dark:bg-slate-800 dark:hover:bg-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 transition flex items-center gap-1.5 cursor-pointer" title="Imprimir o guardar en PDF">
+          <i class="fa-solid fa-print"></i>
+          <span class="hidden md:inline">Imprimir</span>
+        </button>
+
+        <button id="theme-toggle" onclick="toggleDarkMode()" class="p-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-amber-300 border border-slate-200 dark:border-slate-700 transition cursor-pointer" aria-label="Cambiar tema">
+          <i id="theme-icon" class="fa-solid fa-moon"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Sub-barra de Cambio entre Teoría y Cuestionarios -->
+    <div class="border-t border-slate-100 dark:border-slate-800 px-3 sm:px-6 py-2 bg-slate-50/70 dark:bg-slate-900/70 rounded-b-2xl">
+      <div class="max-w-7xl mx-auto flex items-center justify-center gap-2">
+        <button id="tab-teoria" onclick="switchMainSection('teoria')" class="flex-1 sm:flex-initial flex items-center justify-center gap-2 px-5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-amber-600 text-white shadow-sm cursor-pointer">
+          <i class="fa-solid fa-book-open"></i>
+          <span>Apuntes y Teoría por Etapas</span>
+        </button>
+        <button id="tab-test" onclick="switchMainSection('test')" class="flex-1 sm:flex-initial flex items-center justify-center gap-2 px-5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:border-red-400 cursor-pointer">
+          <i class="fa-solid fa-circle-check text-red-600"></i>
+          <span>Ponerse a Prueba (Test)</span>
+          <span class="bg-red-100 dark:bg-red-900/60 text-red-700 dark:text-red-300 text-xs px-2 py-0.5 rounded-full font-extrabold">40</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="flex-grow max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-8">
+
+    <!-- ===================================================================== -->
+    <!-- SECCIÓN 1: APUNTES Y TEORÍA POR BLOQUES                               -->
+    <!-- ===================================================================== -->
+    <section id="section-teoria" class="fade-in space-y-6">
+
+      <!-- Banner Introductorio + Botón de Vídeo Resumen -->
+      <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-900 via-red-950 to-slate-900 text-white p-6 sm:p-8 shadow-xl border border-amber-700/30">
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+          <div class="space-y-2.5 max-w-2xl">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 border border-white/15 text-amber-300 text-xs font-bold uppercase tracking-wider">
+              <i class="fa-solid fa-crown"></i> Unidad Didáctica · 1808 – 1902
+            </span>
+            <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight leading-tight">
+              El convulso siglo XIX español: <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-rose-300">del Antiguo Régimen al Estado Liberal</span>
+            </h2>
+            <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+              Guerras, constituciones, pronunciamientos militares, revoluciones democráticas y la pérdida de las últimas colonias en 1898.
+            </p>
+          </div>
+
+          <!-- Recurso Audiovisual (Tu enlace exacto de YouTube) -->
+          <div class="bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/15 shrink-0 flex flex-col justify-between gap-3 max-w-xs w-full no-print">
+            <div>
+              <span class="text-xs font-bold uppercase tracking-wider text-amber-400">Recurso Audiovisual</span>
+              <h3 class="font-bold text-sm text-white mt-0.5">Repaso Visual: El Siglo XIX en España</h3>
+              <p class="text-xs text-slate-300 mt-0.5">Vídeo resumen antes de hacer el test.</p>
+            </div>
+            <a href="https://youtube.com/watch?v=EGP4IrFQ0NI" target="_blank" rel="noopener noreferrer" class="video-link-btn inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold text-xs sm:text-sm shadow-md transition">
+              <i class="fa-brands fa-youtube text-base"></i>
+              <span>Ver vídeo en YouTube</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-xs opacity-80"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Botonera / Línea del Tiempo Horizontal de Selección de Etapas -->
+      <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-4 shadow-md no-print">
+        <p class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 flex items-center gap-1.5">
+          <i class="fa-solid fa-clock text-amber-500"></i> Selecciona una etapa histórica para estudiarla:
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-2.5">
+          <button onclick="selectBlock(0)" id="timeline-btn-0" class="timeline-card text-left p-3.5 rounded-xl border-2 border-amber-500 bg-amber-50/80 dark:bg-amber-950/40 transition-all cursor-pointer">
+            <span class="text-xs font-extrabold text-amber-700 dark:text-amber-400 block">1808 – 1814</span>
+            <span class="text-sm font-bold text-slate-900 dark:text-white line-clamp-1">1. Guerra Independencia</span>
+            <span class="text-xs text-slate-600 dark:text-slate-400 block mt-0.5">Cortes de Cádiz y «La Pepa»</span>
+          </button>
+
+          <button onclick="selectBlock(1)" id="timeline-btn-1" class="timeline-card text-left p-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/50 hover:border-amber-400 transition-all cursor-pointer">
+            <span class="text-xs font-extrabold text-slate-500 dark:text-slate-400 block">1814 – 1833</span>
+            <span class="text-sm font-bold text-slate-900 dark:text-white line-clamp-1">2. Fernando VII</span>
+            <span class="text-xs text-slate-600 dark:text-slate-400 block mt-0.5">Absolutismo vs Liberalismo</span>
+          </button>
+
+          <button onclick="selectBlock(2)" id="timeline-btn-2" class="timeline-card text-left p-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/50 hover:border-amber-400 transition-all cursor-pointer">
+            <span class="text-xs font-extrabold text-slate-500 dark:text-slate-400 block">1833 – 1868</span>
+            <span class="text-sm font-bold text-slate-900 dark:text-white line-clamp-1">3. Isabel II</span>
+            <span class="text-xs text-slate-600 dark:text-slate-400 block mt-0.5">Estado Liberal y Carlismo</span>
+          </button>
+
+          <button onclick="selectBlock(3)" id="timeline-btn-3" class="timeline-card text-left p-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/50 hover:border-amber-400 transition-all cursor-pointer">
+            <span class="text-xs font-extrabold text-slate-500 dark:text-slate-400 block">1868 – 1874</span>
+            <span class="text-sm font-bold text-slate-900 dark:text-white line-clamp-1">4. Sexenio Democrático</span>
+            <span class="text-xs text-slate-600 dark:text-slate-400 block mt-0.5">Amadeo I y I República</span>
+          </button>
+
+          <button onclick="selectBlock(4)" id="timeline-btn-4" class="timeline-card text-left p-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/50 hover:border-amber-400 transition-all cursor-pointer">
+            <span class="text-xs font-extrabold text-slate-500 dark:text-slate-400 block">1874 – 1902</span>
+            <span class="text-sm font-bold text-slate-900 dark:text-white line-clamp-1">5. La Restauración</span>
+            <span class="text-xs text-slate-600 dark:text-slate-400 block mt-0.5">Turnismo y Crisis del 98</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Contenedor Dinámico del Bloque Seleccionado -->
+      <div id="block-content-container" class="fade-in"></div>
+
+      <!-- Navegación Inferior entre Bloques -->
+      <div class="flex flex-wrap items-center justify-between gap-3 pt-2 no-print">
+        <button id="prev-block-btn" onclick="navigateBlock(-1)" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-200 text-sm font-semibold hover:bg-slate-50 dark:hover:bg-slate-800 disabled:opacity-40 disabled:pointer-events-none transition cursor-pointer">
+          <i class="fa-solid fa-arrow-left"></i>
+          <span>Bloque anterior</span>
+        </button>
+
+        <button onclick="startBlockQuiz()" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-red-600 hover:bg-red-700 text-white text-sm font-bold shadow-md transition cursor-pointer">
+          <i class="fa-solid fa-clipboard-question"></i>
+          <span>Practicar preguntas de este bloque (8 preg.)</span>
+        </button>
+
+        <button id="next-block-btn" onclick="navigateBlock(1)" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-200 text-sm font-semibold hover:bg-slate-50 dark:hover:bg-slate-800 disabled:opacity-40 disabled:pointer-events-none transition cursor-pointer">
+          <span>Siguiente bloque</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- SECCIÓN 2: TEST INTERACTIVO (40 PREGUNTAS EN TOTAL)                   -->
+    <!-- ===================================================================== -->
+    <section id="section-test" class="hidden fade-in space-y-6">
+
+      <!-- Menú de Selección de Test -->
+      <div id="quiz-setup-panel" class="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-lg">
+        <div class="max-w-2xl">
+          <span class="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-red-700 dark:text-red-300 bg-red-50 dark:bg-red-950/60 px-3 py-1 rounded-full mb-3">
+            <i class="fa-solid fa-award"></i> Banco Ampliado · 40 Preguntas (4º ESO)
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-serif font-bold text-slate-900 dark:text-white">Pon a prueba tus conocimientos</h2>
+          <p class="text-slate-600 dark:text-slate-400 mt-2 text-sm sm:text-base">Elige entre un examen general aleatorio de 20 preguntas o practica cada bloque temático por separado (8 preguntas cada uno).</p>
+        </div>
+
+        <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <!-- Examen General -->
+          <button onclick="startQuiz('all')" class="group text-left p-5 rounded-2xl border-2 border-red-600 bg-red-50/50 dark:bg-red-950/30 hover:bg-red-50 dark:hover:bg-red-950/50 transition-all flex flex-col justify-between cursor-pointer">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="w-9 h-9 rounded-xl bg-red-600 text-white flex items-center justify-center">
+                  <i class="fa-solid fa-shuffle"></i>
+                </span>
+                <span class="text-xs font-bold text-red-700 dark:text-red-300 bg-red-100 dark:bg-red-900/60 px-2.5 py-1 rounded-full">Recomendado</span>
+              </div>
+              <h3 class="font-bold text-slate-900 dark:text-white text-base">Examen General (Aleatorio)</h3>
+              <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">20 preguntas mezcladas de todos los bloques del siglo XIX.</p>
+            </div>
+            <span class="mt-4 inline-flex items-center gap-1 text-xs font-bold text-red-700 dark:text-red-400 group-hover:translate-x-1 transition-transform">
+              Empezar examen <i class="fa-solid fa-chevron-right"></i>
+            </span>
+          </button>
+
+          <!-- Bloque 1 -->
+          <button onclick="startQuiz(0)" class="group text-left p-5 rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-amber-500 bg-white dark:bg-slate-800/60 transition-all flex flex-col justify-between cursor-pointer">
+            <div>
+              <span class="text-xs font-bold text-amber-700 dark:text-amber-400">Bloque 1 (1808–1814)</span>
+              <h3 class="font-bold text-slate-900 dark:text-white text-base mt-1">Guerra de la Independencia y Cádiz</h3>
+              <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">Aranjuez, Bayona, guerrilla, afrancesados y Constitución de 1812.</p>
+            </div>
+            <span class="mt-4 inline-flex items-center gap-1 text-xs font-bold text-amber-700 dark:text-amber-400 group-hover:translate-x-1 transition-transform">
+              Practicar Bloque 1 (8 preg.) <i class="fa-solid fa-chevron-right"></i>
+            </span>
+          </button>
+
+          <!-- Bloque 2 -->
+          <button onclick="startQuiz(1)" class="group text-left p-5 rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-amber-500 bg-white dark:bg-slate-800/60 transition-all flex flex-col justify-between cursor-pointer">
+            <div>
+              <span class="text-xs font-bold text-amber-700 dark:text-amber-400">Bloque 2 (1814–1833)</span>
+              <h3 class="font-bold text-slate-900 dark:text-white text-base mt-1">El reinado de Fernando VII</h3>
+              <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">Sexenio Absolutista, Trienio Liberal, Década Ominosa y América.</p>
+            </div>
+            <span class="mt-4 inline-flex items-center gap-1 text-xs font-bold text-amber-700 dark:text-amber-400 group-hover:translate-x-1 transition-transform">
+              Practicar Bloque 2 (8 preg.) <i class="fa-solid fa-chevron-right"></i>
+            </span>
+          </button>
+
+          <!-- Bloque 3 -->
+          <button onclick="startQuiz(2)" class="group text-left p-5 rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-amber-500 bg-white dark:bg-slate-800/60 transition-all flex flex-col justify-between cursor-pointer">
+            <div>
+              <span class="text-xs font-bold text-amber-700 dark:text-amber-400">Bloque 3 (1833–1868)</span>
+              <h3 class="font-bold text-slate-900 dark:text-white text-base mt-1">El reinado de Isabel II</h3>
+              <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">Regencias, Guerras Carlistas, Moderados, Progresistas y Desamortizaciones.</p>
+            </div>
+            <span class="mt-4 inline-flex items-center gap-1 text-xs font-bold text-amber-700 dark:text-amber-400 group-hover:translate-x-1 transition-transform">
+              Practicar Bloque 3 (8 preg.) <i class="fa-solid fa-chevron-right"></i>
+            </span>
+          </button>
+
+          <!-- Bloque 4 -->
+          <button onclick="startQuiz(3)" class="group text-left p-5 rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-amber-500 bg-white dark:bg-slate-800/60 transition-all flex flex-col justify-between cursor-pointer">
+            <div>
+              <span class="text-xs font-bold text-amber-700 dark:text-amber-400">Bloque 4 (1868–1874)</span>
+              <h3 class="font-bold text-slate-900 dark:text-white text-base mt-1">El Sexenio Democrático</h3>
+              <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">La Gloriosa, Constitución de 1869, Amadeo I y Primera República.</p>
+            </div>
+            <span class="mt-4 inline-flex items-center gap-1 text-xs font-bold text-amber-700 dark:text-amber-400 group-hover:translate-x-1 transition-transform">
+              Practicar Bloque 4 (8 preg.) <i class="fa-solid fa-chevron-right"></i>
+            </span>
+          </button>
+
+          <!-- Bloque 5 -->
+          <button onclick="startQuiz(4)" class="group text-left p-5 rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-amber-500 bg-white dark:bg-slate-800/60 transition-all flex flex-col justify-between cursor-pointer">
+            <div>
+              <span class="text-xs font-bold text-amber-700 dark:text-amber-400">Bloque 5 (1874–1902)</span>
+              <h3 class="font-bold text-slate-900 dark:text-white text-base mt-1">La Restauración Borbónica</h3>
+              <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">Cánovas, Turno Pacífico, Caciquismo, Movimiento Obrero y Desastre del 98.</p>
+            </div>
+            <span class="mt-4 inline-flex items-center gap-1 text-xs font-bold text-amber-700 dark:text-amber-400 group-hover:translate-x-1 transition-transform">
+              Practicar Bloque 5 (8 preg.) <i class="fa-solid fa-chevron-right"></i>
+            </span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Panel Activo del Cuestionario -->
+      <div id="quiz-active-panel" class="hidden bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-lg fade-in">
+        <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-slate-100 dark:border-slate-800">
+          <div class="flex items-center gap-3">
+            <button onclick="resetQuizToMenu()" class="text-slate-500 hover:text-slate-800 dark:hover:text-white p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition cursor-pointer" title="Volver al menú">
+              <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            <div>
+              <span id="quiz-mode-label" class="text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400">Examen General</span>
+              <p class="text-sm font-bold text-slate-700 dark:text-slate-300">Pregunta <span id="quiz-current-num">1</span> de <span id="quiz-total-num">20</span></p>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3 bg-slate-100 dark:bg-slate-800 px-4 py-2 rounded-xl">
+            <div class="flex items-center gap-1.5 text-emerald-600 dark:text-emerald-400 font-extrabold text-sm">
+              <i class="fa-solid fa-check"></i>
+              <span id="score-correct">0</span>
+            </div>
+            <span class="text-slate-300 dark:text-slate-600">|</span>
+            <div class="flex items-center gap-1.5 text-red-600 dark:text-red-400 font-extrabold text-sm">
+              <i class="fa-solid fa-xmark"></i>
+              <span id="score-wrong">0</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden mt-4 mb-6">
+          <div id="quiz-progress-bar" class="bg-amber-500 h-full transition-all duration-300" style="width: 0%"></div>
+        </div>
+
+        <div class="mb-3">
+          <span id="question-block-badge" class="inline-block text-xs font-bold bg-amber-100 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300 px-3 py-1 rounded-lg">Bloque 1</span>
+        </div>
+
+        <h3 id="question-text" class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white leading-snug mb-6">Cargando pregunta...</h3>
+
+        <div id="options-container" class="space-y-3"></div>
+
+        <div id="feedback-box" class="hidden mt-6 p-4 sm:p-5 rounded-2xl border fade-in">
+          <div class="flex items-start gap-3">
+            <div id="feedback-icon" class="mt-0.5 shrink-0 text-lg"></div>
+            <div>
+              <h4 id="feedback-title" class="font-bold text-base"></h4>
+              <p id="feedback-explanation" class="text-sm mt-1 leading-relaxed"></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 flex justify-end">
+          <button id="next-question-btn" onclick="nextQuestion()" class="hidden inline-flex items-center gap-2 px-5 py-2.5 bg-slate-900 dark:bg-amber-600 hover:bg-slate-800 dark:hover:bg-amber-500 text-white text-sm font-bold rounded-xl shadow transition cursor-pointer">
+            <span>Siguiente pregunta</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Panel de Resultados Finales -->
+      <div id="quiz-results-panel" class="hidden bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-lg fade-in">
+        <div class="text-center max-w-xl mx-auto">
+          <div id="result-badge-icon" class="w-16 h-16 rounded-2xl mx-auto flex items-center justify-center mb-4 text-2xl"></div>
+          <h2 class="text-2xl sm:text-3xl font-serif font-bold text-slate-900 dark:text-white">¡Test completado!</h2>
+          <p id="result-subtitle" class="text-slate-600 dark:text-slate-400 mt-1 text-sm sm:text-base">Aquí tienes el resumen de tu rendimiento.</p>
+
+          <div class="my-6 p-6 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 inline-block w-full sm:w-auto min-w-[250px]">
+            <span class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 block">Calificación Final</span>
+            <div class="text-4xl sm:text-5xl font-black text-slate-900 dark:text-white my-1">
+              <span id="final-grade">0.0</span><span class="text-xl text-slate-400 font-normal"> / 10</span>
+            </div>
+            <p class="text-sm font-medium text-slate-600 dark:text-slate-300">
+              Has acertado <strong id="final-correct" class="text-emerald-600 dark:text-emerald-400">0</strong> de <strong id="final-total">0</strong> preguntas
+            </p>
+          </div>
+        </div>
+
+        <div id="recommendations-container" class="max-w-2xl mx-auto mt-4 p-5 rounded-2xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800"></div>
+
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+          <button onclick="retryCurrentQuiz()" class="inline-flex items-center gap-2 px-5 py-2.5 bg-amber-600 hover:bg-amber-700 text-white text-sm font-bold rounded-xl shadow transition cursor-pointer">
+            <i class="fa-solid fa-rotate-right"></i>
+            <span>Repetir este test</span>
+          </button>
+          <button onclick="resetQuizToMenu()" class="inline-flex items-center gap-2 px-5 py-2.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 hover:bg-slate-50 text-slate-700 dark:text-slate-200 text-sm font-bold rounded-xl transition cursor-pointer">
+            <i class="fa-solid fa-list"></i>
+            <span>Elegir otro bloque</span>
+          </button>
+          <button onclick="switchMainSection('teoria')" class="inline-flex items-center gap-2 px-5 py-2.5 bg-slate-900 dark:bg-indigo-600 hover:bg-slate-800 text-white text-sm font-bold rounded-xl transition cursor-pointer">
+            <i class="fa-solid fa-book-open"></i>
+            <span>Volver a los apuntes</span>
+          </button>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- PIE DE PÁGINA -->
+  <footer class="max-w-6xl mx-auto px-4 py-8 text-center text-xs text-slate-500 dark:text-slate-400">
+    <p>Material didáctico interactivo · Geografía e Historia (4º ESO) · Autor: <strong>Pedro J. Sirvent Sanz</strong></p>
+  </footer>
+
+  <!-- MODAL LÍNEA DEL TIEMPO (CRONOLOGÍA 1808–1902) -->
+  <div id="modal-timeline" class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 no-print" onclick="if(event.target===this) closeModal('modal-timeline')">
+    <div class="bg-white dark:bg-slate-900 rounded-3xl max-w-2xl w-full max-h-[82vh] flex flex-col shadow-2xl border border-slate-200 dark:border-slate-800 fade-in">
+      <div class="p-5 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
+        <div class="flex items-center gap-2.5">
+          <div class="w-9 h-9 rounded-xl bg-amber-100 dark:bg-amber-900/60 text-amber-700 dark:text-amber-300 flex items-center justify-center">
+            <i class="fa-solid fa-timeline"></i>
+          </div>
+          <div>
+            <h3 class="font-black text-lg text-slate-900 dark:text-white">Línea del Tiempo: España Siglo XIX</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400">Hitos fundamentales entre 1808 y 1902</p>
+          </div>
+        </div>
+        <button onclick="closeModal('modal-timeline')" class="p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="p-5 overflow-y-auto space-y-2.5 text-sm">
+        <div class="p-3 rounded-xl bg-amber-50 dark:bg-amber-950/40 border-l-4 border-amber-500"><strong>1808:</strong> Motín de Aranjuez, Abdicaciones de Bayona y levantamiento del 2 de mayo. Inicio de la Guerra de la Independencia.</div>
+        <div class="p-3 rounded-xl bg-amber-50 dark:bg-amber-950/40 border-l-4 border-amber-500"><strong>1812:</strong> Promulgación de la Constitución de Cádiz («La Pepa») el 19 de marzo.</div>
+        <div class="p-3 rounded-xl bg-red-50 dark:bg-red-950/40 border-l-4 border-red-600"><strong>1814:</strong> Regreso de Fernando VII y restauración del absolutismo (Manifiesto de los Persas).</div>
+        <div class="p-3 rounded-xl bg-red-50 dark:bg-red-950/40 border-l-4 border-red-600"><strong>1820–1823:</strong> Trienio Liberal tras el pronunciamiento de Riego; fin con los Cien Mil Hijos de San Luis.</div>
+        <div class="p-3 rounded-xl bg-red-50 dark:bg-red-950/40 border-l-4 border-red-600"><strong>1824:</strong> Batalla de Ayacucho: independencia definitiva de la América continental española.</div>
+        <div class="p-3 rounded-xl bg-indigo-50 dark:bg-indigo-950/40 border-l-4 border-indigo-600"><strong>1833:</strong> Muerte de Fernando VII, inicio del reinado de Isabel II y de la Primera Guerra Carlista.</div>
+        <div class="p-3 rounded-xl bg-indigo-50 dark:bg-indigo-950/40 border-l-4 border-indigo-600"><strong>1836 y 1855:</strong> Desamortizaciones eclesiástica (Mendizábal) y civil/municipal (Madoz).</div>
+        <div class="p-3 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border-l-4 border-emerald-600"><strong>1868:</strong> Revolución «La Gloriosa» y exilio de Isabel II. Inicio del Sexenio Democrático.</div>
+        <div class="p-3 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border-l-4 border-emerald-600"><strong>1873–1874:</strong> Primera República Española (4 presidentes en 11 meses) y golpe del general Pavía.</div>
+        <div class="p-3 rounded-xl bg-slate-100 dark:bg-slate-800 border-l-4 border-slate-600"><strong>1874–1876:</strong> Restauración borbónica en Alfonso XII, sistema canovista (turno pacífico) y Constitución de 1876.</div>
+        <div class="p-3 rounded-xl bg-rose-50 dark:bg-rose-950/40 border-l-4 border-rose-600"><strong>1898:</strong> «Desastre del 98» (Tratado de París): pérdida de Cuba, Puerto Rico y Filipinas.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL GLOSARIO -->
+  <div id="modal-glosario" class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 no-print" onclick="if(event.target===this) closeModal('modal-glosario')">
+    <div class="bg-white dark:bg-slate-900 rounded-3xl max-w-2xl w-full max-h-[82vh] flex flex-col shadow-2xl border border-slate-200 dark:border-slate-800 fade-in">
+      <div class="p-5 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
+        <div class="flex items-center gap-2.5">
+          <div class="w-9 h-9 rounded-xl bg-indigo-100 dark:bg-indigo-900/60 text-indigo-700 dark:text-indigo-300 flex items-center justify-center">
+            <i class="fa-solid fa-book-open"></i>
+          </div>
+          <div>
+            <h3 class="font-black text-lg text-slate-900 dark:text-white">Glosario del Siglo XIX</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400">Conceptos clave para 4º ESO</p>
+          </div>
+        </div>
+        <button onclick="closeModal('modal-glosario')" class="p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="p-5 overflow-y-auto space-y-2.5 text-sm" id="glossary-list"></div>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT DE LA APLICACIÓN -->
+  <script>
+    // ==========================================
+    // 1. BASE DE DATOS DE CONTENIDOS (5 BLOQUES)
+    // ==========================================
+    const blocksData = [
+      {
+        id: 0,
+        badge: "Bloque 1 · 1808 – 1814",
+        title: "La crisis del Antiguo Régimen y la Guerra de la Independencia",
+        subtitle: "De la invasión napoleónica al nacimiento del liberalismo español en las Cortes de Cádiz.",
+        image: "gue.jpg",
+        imageAlt: "Guerra de la Independencia (1808-1814)",
+        keyFact: {
+          title: "Dato Clave: La Constitución de 1812 («La Pepa»)",
+          text: "Aprobada el 19 de marzo de 1812, fue la primera constitución liberal de España. Establecía la soberanía nacional, la división de poderes, el sufragio universal masculino indirecto y derechos como la libertad de imprenta."
+        },
+        sections: [
+          {
+            heading: "1. El estallido de 1808: Aranjuez, Bayona y el 2 de mayo",
+            icon: "fa-fire",
+            content: [
+              "<strong>Tratado de Fontainebleau (1807):</strong> Manuel Godoy (valido de Carlos IV) permitió a Napoleón cruzar España para invadir Portugal, pero las tropas francesas ocuparon plazas estratégicas españolas.",
+              "<strong>Motín de Aranjuez (marzo de 1808):</strong> Levantamiento popular instigado por los partidarios del príncipe Fernando contra Godoy. Provocó la caída del valido y la abdicación de Carlos IV en su hijo, <strong>Fernando VII</strong>.",
+              "<strong>Abdicaciones de Bayona (mayo de 1808):</strong> Napoleón reunió a padre e hijo en Bayona y les obligó a ceder la corona a su hermano, <strong>José I Bonaparte</strong>. El <strong>2 de mayo de 1808</strong> el pueblo de Madrid se sublevó contra la ocupación francesa."
+            ]
+          },
+          {
+            heading: "2. El desarrollo de la guerra y la guerrilla",
+            icon: "fa-shield-halved",
+            content: [
+              "<strong>Dos bandos entre los españoles:</strong> Los <em>afrancesados</em> (apoyaron a José I buscando reformas ilustradas desde arriba) y los <em>patriotas</em> (lucharon contra el invasor, divididos a su vez entre absolutistas y liberales).",
+              "<strong>La guerra de guerrillas:</strong> Ante la superioridad del ejército napoleónico, partidas de civiles dirigidas por líderes como Espoz y Mina o El Empecinado desgastaron a los franceses mediante ataques sorpresa, apoyados por el ejército británico del duque de Wellington (victorias de Bailén, Arapiles y Vitoria)."
+            ]
+          },
+          {
+            heading: "3. Las Cortes de Cádiz y la obra legislativa",
+            icon: "fa-scale-balanced",
+            content: [
+              "Ante el vacío de poder se crearon Juntas Provinciales y una Junta Suprema Central que convocó Cortes en <strong>Cádiz</strong> (única ciudad libre del asedio francés).",
+              "Además de la <strong>Constitución de 1812</strong>, las Cortes abolieron el régimen señorial, los gremios, la Inquisición y los privilegios estamentales, poniendo fin jurídicamente al Antiguo Régimen."
+            ]
+          }
+        ]
+      },
+      {
+        id: 1,
+        badge: "Bloque 2 · 1814 – 1833",
+        title: "El reinado de Fernando VII y la independencia americana",
+        subtitle: "El enfrentamiento constante entre la reacción absolutista y los intentos liberales.",
+        image: "fer.jpg",
+        imageAlt: "Reinado de Fernando VII (1814-1833)",
+        keyFact: {
+          title: "Dato Clave: Las tres etapas de Fernando VII",
+          text: "Su reinado se divide en: 1) Sexenio Absolutista (1814–1820), 2) Trienio Liberal (1820–1823) tras el pronunciamiento de Riego, y 3) Década Ominosa (1823–1833), cerrada con el problema sucesorio."
+        },
+        sections: [
+          {
+            heading: "1. Sexenio Absolutista (1814–1820)",
+            icon: "fa-crown",
+            content: [
+              "Tras firmar el Tratado de Valençay con Napoleón, Fernando VII regresó a España. Apoyado por el <strong>Manifiesto de los Persas</strong> (escrito por diputados absolutistas), anuló la Constitución de 1812 y toda la obra de Cádiz.",
+              "Se restauraron el absolutismo, los señoríos y la Inquisición, mientras los liberales sufrían persecución, exilio o recurrían a <strong>pronunciamientos militares</strong> (Mina, Porlier, Lacy) para intentar restablecer la Constitución."
+            ]
+          },
+          {
+            heading: "2. El Trienio Liberal (1820–1823)",
+            icon: "fa-scroll",
+            content: [
+              "En enero de 1820 triunfó el pronunciamiento del comandante <strong>Rafael del Riego</strong> en Las Cabezas de San Juan (Sevilla). El rey se vio obligado a jurar la Constitución de 1812.",
+              "Durante tres años los liberales se dividieron entre <em>doceañistas</em> (moderados) y <em>veinteañistas</em> (exaltados). Finalmente, la Santa Alianza envió a los <strong>Cien Mil Hijos de San Luis</strong> (ejército francés al mando del duque de Angulema), que restauraron el absolutismo en 1823."
+            ]
+          },
+          {
+            heading: "3. Década Ominosa (1823–1833) y pérdida de América",
+            icon: "fa-earth-americas",
+            content: [
+              "<strong>Emancipación americana:</strong> Entre 1810 y 1824, liderados por criollos como <strong>Simón Bolívar</strong> y <strong>José de San Martín</strong> y tras la decisiva <strong>batalla de Ayacucho (1824)</strong>, España perdió todas sus colonias americanas excepto Cuba, Puerto Rico y Filipinas.",
+              "<strong>Problema sucesorio:</strong> Fernando VII promulgó la <strong>Pragmática Sanción (1830)</strong> para anular la Ley Sálica y permitir reinar a su hija <strong>Isabel</strong>, desheredando a su hermano absolutista <strong>Carlos María Isidro</strong>."
+            ]
+          }
+        ]
+      },
+      {
+        id: 2,
+        badge: "Bloque 3 · 1833 – 1868",
+        title: "El reinado de Isabel II: la construcción del Estado Liberal",
+        subtitle: "Guerras carlistas, alternancia entre moderados y progresistas y desamortizaciones.",
+        image: "isa.jpg",
+        imageAlt: "Reinado de Isabel II (1833-1868)",
+        keyFact: {
+          title: "Dato Clave: Moderados frente a Progresistas",
+          text: "Los Moderados (Narváez) defendían la soberanía compartida Rey-Cortes, sufragio censitario muy restringido y la Constitución de 1845. Los Progresistas (Espartero) defendían la soberanía nacional, mayor poder de las Cortes, Milicia Nacional y la Constitución de 1837."
+        },
+        sections: [
+          {
+            heading: "1. Regencias (1833–1843) y Guerras Carlistas",
+            icon: "fa-chess-rook",
+            content: [
+              "Durante la minoría de edad de Isabel II ejercieron la regencia su madre <strong>María Cristina</strong> (1833–1840) y el general <strong>Baldomero Espartero</strong> (1840–1843).",
+              "<strong>Primera Guerra Carlista (1833–1840):</strong> Enfrentó a los carlistas (absolutistas partidarios de Don Carlos bajo el lema <em>«Dios, Patria, Fueros, Rey»</em>, fuertes en País Vasco, Navarra y Cataluña) contra los isabelinos (apoyados por los liberales). Terminó con el <strong>Abrazo de Vergara (1839)</strong>."
+            ]
+          },
+          {
+            heading: "2. Década Moderada (1844–1854) y Bienio Progresista (1854–1856)",
+            icon: "fa-landmark-dome",
+            content: [
+              "<strong>Década Moderada:</strong> Liderada por el general <strong>Narváez</strong>. Se aprobó la Constitución moderada de 1845, se creó la <strong>Guardia Civil (1844)</strong> para garantizar el orden rural, se centralizó la administración y se firmó el Concordato con la Santa Sede (1851).",
+              "<strong>Bienio Progresista:</strong> Tras la revolución de 1854 (<em>La Vicalvarada</em>), gobernaron Espartero y O'Donnell, aprobando la <strong>Ley General de Ferrocarriles (1855)</strong> y la Desamortización de Madoz."
+            ]
+          },
+          {
+            heading: "3. Las Desamortizaciones y la crisis final (1856–1868)",
+            icon: "fa-wheat-awn",
+            content: [
+              "<strong>Desamortizaciones de Mendizábal (1836) y Madoz (1855):</strong> Consistieron en expropiar tierras de la Iglesia (<em>manos muertas</em>) y de los ayuntamientos (<em>bienes comunales</em>) para subastarlas y reducir la deuda pública. No crearon una clase media campesina: las tierras fueron compradas por nobles y burgueses adinerados.",
+              "El autoritarismo final de los gobiernos moderados, la crisis económica de 1866 y el <strong>Pacto de Ostende</strong> desembocaron en la caída de Isabel II en 1868."
+            ]
+          }
+        ]
+      },
+      {
+        id: 3,
+        badge: "Bloque 4 · 1868 – 1874",
+        title: "El Sexenio Democrático: revolución, monarquía y república",
+        subtitle: "El primer intento de establecer un régimen plenamente democrático en España.",
+        image: "sex.jpg",
+        imageAlt: "Sexenio Democrático (1868-1874)",
+        keyFact: {
+          title: "Dato Clave: La Constitución de 1869",
+          text: "Fue la primera constitución democrática de la historia de España: implantó el sufragio universal masculino directo, una amplia declaración de derechos (reunión, asociación, prensa) y la libertad de cultos, manteniendo la monarquía parlamentaria."
+        },
+        sections: [
+          {
+            heading: "1. La Revolución «La Gloriosa» (1868) y el reinado de Amadeo I (1871–1873)",
+            icon: "fa-flag",
+            content: [
+              "En septiembre de 1868, los generales <strong>Prim y Serrano</strong> junto al almirante Topete encabezaron la revolución que obligó a Isabel II a exiliarse en Francia.",
+              "Tras aprobar la <strong>Constitución de 1869</strong>, las Cortes eligieron como rey constitucional al italiano <strong>Amadeo I de Saboya</strong>. Sin embargo, el asesinato de su principal valedor (el general Prim), la guerra de Cuba, una nueva guerra carlista y el rechazo de republicanos y alfonsinos provocaron su <strong>abdicación en febrero de 1873</strong>."
+            ]
+          },
+          {
+            heading: "2. La Primera República Española (1873–1874)",
+            icon: "fa-people-group",
+            content: [
+              "Tras abdicar Amadeo I, las Cortes proclamaron la <strong>Primera República</strong> el 11 de febrero de 1873. En apenas once meses se sucedieron cuatro presidentes: <strong>Figueras, Pi y Margall, Salmerón y Castelar</strong>.",
+              "La República sufrió una grave inestabilidad por la división entre republicanos <em>unitarios</em> y <em>federales</em>, el estallido de la <strong>rebelión cantonal</strong> (Cartagena), la Tercera Guerra Carlista y la guerra en Cuba."
+            ]
+          },
+          {
+            heading: "3. El fin del Sexenio en 1874",
+            icon: "fa-gavel",
+            content: [
+              "En enero de 1874, el general <strong>Pavía</strong> disolvió las Cortes mediante un golpe de Estado, instaurándose una república autoritaria presidida por el general Serrano.",
+              "Finalmente, en diciembre de 1874, el pronunciamiento del general <strong>Martínez Campos</strong> en Sagunto proclamó rey a <strong>Alfonso XII</strong>, iniciando la Restauración."
+            ]
+          }
+        ]
+      },
+      {
+        id: 4,
+        badge: "Bloque 5 · 1874 – 1902",
+        title: "La Restauración Borbónica y el Desastre del 98",
+        subtitle: "Estabilidad política bipartidista, caciquismo, movimiento obrero y crisis colonial.",
+        image: "res.jpg",
+        imageAlt: "Restauración Borbónica y Crisis del 98",
+        keyFact: {
+          title: "Dato Clave: El Sistema Canovista y el Turno Pacífico",
+          text: "Diseñado por Antonio Cánovas del Castillo bajo la Constitución de 1876. Se basaba en la alternancia pactada entre el Partido Conservador (Cánovas) y el Partido Liberal (Sagasta), garantizada mediante el fraude electoral ('pucherazo') y el caciquismo."
+        },
+        sections: [
+          {
+            heading: "1. El sistema político de la Restauración",
+            icon: "fa-handshake",
+            content: [
+              "<strong>Constitución de 1876:</strong> De carácter moderado e integrador, establecía la soberanía compartida entre el Rey y las Cortes bicamerales y permitía gobernar tanto a conservadores como a liberales (que aprobaron el sufragio universal masculino en 1890).",
+              "<strong>Caciquismo y «pucherazo»:</strong> Cuando el gobierno se desgastaba, el rey encargaba formar gobierno al partido de la oposición y se convocaban elecciones amañadas (<em>encasillado</em> y manipulación de actas por los caciques locales) para asegurar la mayoría parlamentaria."
+            ]
+          },
+          {
+            heading: "2. Oposición al sistema: nacionalismos y movimiento obrero",
+            icon: "fa-industry",
+            content: [
+              "<strong>Nacionalismos periféricos:</strong> Surgieron movimientos nacionalistas en Cataluña (<em>Bases de Manresa</em>, Prat de la Riba) y el País Vasco (fundación del <strong>PNV</strong> por Sabino Arana en 1895).",
+              "<strong>Movimiento obrero:</strong> Se consolidaron dos grandes corrientes: el <strong>socialismo marxista</strong> (Pablo Iglesias fundó el <strong>PSOE</strong> en 1879 y el sindicato <strong>UGT</strong> en 1888) y el <strong>anarquismo</strong>, muy fuerte entre el campesinado andaluz y el proletariado catalán."
+            ]
+          },
+          {
+            heading: "3. La Crisis y el «Desastre del 98»",
+            icon: "fa-ship",
+            content: [
+              "Durante la regencia de <strong>María Cristina de Habsburgo</strong> (1885–1902), estallaron insurrecciones independentistas en <strong>Cuba (1895, José Martí)</strong> y <strong>Filipinas (1896, José Rizal)</strong>.",
+              "Tras el hundimiento del acorazado estadounidense <em>Maine</em> en La Habana (1898), EE.UU. declaró la guerra a España y destruyó las flotas españolas en Cavite y Santiago de Cuba. Por el <strong>Tratado de París (1898)</strong> España perdió Cuba, Puerto Rico y Filipinas, desatando una profunda crisis moral y el movimiento crítico del <strong>Regeneracionismo</strong> (Joaquín Costa) y la <strong>Generación del 98</strong>."
+            ]
+          }
+        ]
+      }
+    ];
+
+    // ==========================================
+    // 2. GLOSARIO RÁPIDO
+    // ==========================================
+    const glossaryData = [
+      { term: "Afrancesados", def: "Españoles ilustrados que apoyaron a José I Bonaparte durante la Guerra de la Independencia por considerar que traería reformas modernizadoras." },
+      { term: "Pronunciamiento", def: "Sublevación militar encabezada por un jefe del ejército para forzar un cambio político o de gobierno; muy habitual en el siglo XIX español." },
+      { term: "Sufragio censitario", def: "Sistema electoral en el que solo pueden votar los ciudadanos varones que poseen un determinado nivel de riqueza o propiedades." },
+      { term: "Desamortización", def: "Incautación por parte del Estado de bienes raíces de la Iglesia (manos muertas) o de los municipios para venderlos en subasta pública y obtener ingresos." },
+      { term: "Carlismo", def: "Movimiento político tradicionalista y absolutista que defendía los derechos al trono de Carlos María Isidro, el catolicismo integral y los fueros tradicionales." },
+      { term: "Cantonalismo", def: "Movimiento insurreccional radical durante la Primera República (1873) que aspiraba a dividir España en cantones o ciudades independientes federadas." },
+      { term: "Caciquismo y «Pucherazo»", def: "Red de influencia de notables locales (caciques) que manipulaban las elecciones mediante fraudes en el recuento de votos ('pucherazo') para asegurar el turno pacífico." },
+      { term: "Regeneracionismo", def: "Corriente intelectual y política surgida tras el Desastre del 98 (liderada por Joaquín Costa) que pedía modernizar España («escuela y despensa») y acabar con el caciquismo." }
+    ];
+
+    // ==========================================
+    // 3. BANCO AMPLIADO DE 40 PREGUNTAS (8 POR BLOQUE)
+    // ==========================================
+    const quizQuestions = [
+      // BLOQUE 0: GUERRA DE LA INDEPENDENCIA (8 PREGUNTAS)
+      { block: 0, q: "¿Qué tratado firmado en 1807 permitió la entrada de tropas francesas en España rumbo a Portugal?", opts: ["Tratado de Valençay", "Tratado de Fontainebleau", "Tratado de París", "Pacto de Ostende"], ans: 1, exp: "Por el Tratado de Fontainebleau (1807), Godoy autorizó el paso del ejército de Napoleón hacia Portugal, lo que facilitó la ocupación francesa de España." },
+      { block: 0, q: "¿Qué consecuencia inmediata tuvo el Motín de Aranjuez en marzo de 1808?", opts: ["La proclamación de la República", "La caída de Godoy y la abdicación de Carlos IV en Fernando VII", "La aprobación de La Pepa", "La derrota en Bailén"], ans: 1, exp: "El levantamiento popular en Aranjuez forzó la destitución de Manuel Godoy y obligó a Carlos IV a abdicar en su hijo Fernando VII." },
+      { block: 0, q: "¿A quién entregó Napoleón la corona española tras las Abdicaciones de Bayona?", opts: ["A su hermano José I Bonaparte", "Al general Wellington", "A Rafael del Riego", "Al duque de Angulema"], ans: 0, exp: "En Bayona (mayo de 1808), Napoleón obligó a Carlos IV y Fernando VII a renunciar al trono y nombró rey a su hermano José I." },
+      { block: 0, q: "¿Qué fecha marcó el inicio del levantamiento popular madrileño contra las tropas francesas en 1808?", opts: ["19 de marzo", "2 de mayo", "14 de julio", "12 de octubre"], ans: 1, exp: "El 2 de mayo de 1808 el pueblo de Madrid se sublevó contra la salida de los últimos miembros de la familia real, iniciando la Guerra de la Independencia." },
+      { block: 0, q: "¿Qué táctica militar utilizaron las partidas civiles españolas para desgastar al ejército de Napoleón?", opts: ["Guerra de trincheras", "Guerra de guerrillas", "Bloqueo naval", "Guerra relámpago"], ans: 1, exp: "La guerrilla consistía en ataques rápidos y emboscadas sobre el terreno realizados por grupos civiles que conocían perfectamente la geografía local." },
+      { block: 0, q: "¿Cómo se llamó a los españoles que apoyaron el reinado de José I Bonaparte?", opts: ["Carlistas", "Afrancesados", "Doceañistas", "Cantonalistas"], ans: 1, exp: "Los afrancesados eran una minoría ilustrada que colaboró con José I con la esperanza de modernizar España mediante reformas desde arriba." },
+      { block: 0, q: "¿Cuándo se promulgó la primera constitución liberal de España, conocida popularmente como «La Pepa»?", opts: ["19 de marzo de 1812", "2 de mayo de 1808", "11 de febrero de 1873", "6 de diciembre de 1978"], ans: 0, exp: "Las Cortes de Cádiz aprobaron la Constitución el 19 de marzo de 1812, festividad de San José, motivo por el que recibió el apodo de 'La Pepa'." },
+      { block: 0, q: "¿Qué principio fundamental recogía la Constitución de Cádiz de 1812?", opts: ["Soberanía absoluta del rey", "Soberanía nacional y división de poderes", "Prohibición de la libertad de imprenta", "Restauración de la Inquisición"], ans: 1, exp: "La Constitución de 1812 proclamó que la soberanía reside en la Nación, estableció la división de poderes y reconoció derechos individuales." },
+
+      // BLOQUE 1: FERNANDO VII (8 PREGUNTAS)
+      { block: 1, q: "¿Qué documento firmado por diputados absolutistas pidió a Fernando VII anular la obra de Cádiz en 1814?", opts: ["Manifiesto de los Persas", "Pacto de Ostende", "Bases de Manresa", "Pragmática Sanción"], ans: 0, exp: "El Manifiesto de los Persas (1814) solicitó al rey el regreso al absolutismo y la derogación de la Constitución de 1812." },
+      { block: 1, q: "¿Qué militar encabezó en enero de 1820 el pronunciamiento que inició el Trienio Liberal?", opts: ["Baldomero Espartero", "Rafael del Riego", "Ramón María Narváez", "Juan Prim"], ans: 1, exp: "El comandante Rafael del Riego se pronunció en Las Cabezas de San Juan (Sevilla) en 1820, obligando a Fernando VII a jurar la Constitución de 1812." },
+      { block: 1, q: "¿Qué ejército extranjero invadió España en 1823 para poner fin al Trienio Liberal?", opts: ["La Armada Invencible", "Los Cien Mil Hijos de San Luis", "El Ejército Rojo", "La Legión Cóndor"], ans: 1, exp: "La Santa Alianza envió a los Cien Mil Hijos de San Luis, un ejército francés dirigido por el duque de Angulema que restauró el absolutismo." },
+      { block: 1, q: "¿Cómo se denominó la última etapa absolutista del reinado de Fernando VII (1823–1833)?", opts: ["Trienio Liberal", "Década Ominosa", "Década Moderada", "Sexenio Democrático"], ans: 1, exp: "Los liberales llamaron Década Ominosa al período 1823–1833 por la dura represión política ejercida contra ellos." },
+      { block: 1, q: "¿Qué grupo social lideró los procesos de independencia en la América española?", opts: ["Los criollos", "Los peninsulares", "Los carlistas", "Los gremios"], ans: 0, exp: "Los criollos (descendientes de españoles nacidos en América) tenían el poder económico pero estaban excluidos de los altos cargos políticos." },
+      { block: 1, q: "¿Qué batalla de 1824 supuso el fin definitivo del dominio español en la América continental?", opts: ["Batalla de Bailén", "Batalla de Ayacucho", "Batalla de Trafalgar", "Batalla de Cavite"], ans: 1, exp: "La derrota realista en Ayacucho (Perú, 1824) selló la independencia de la América continental; España solo conservó Cuba, Puerto Rico y Filipinas." },
+      { block: 1, q: "¿Qué norma promulgó Fernando VII en 1830 para que pudiera reinar su hija Isabel?", opts: ["Ley Sálica", "Pragmática Sanción", "Ley de Ferrocarriles", "Concordato"], ans: 1, exp: "La Pragmática Sanción abolió la Ley Sálica (que impedía reinar a las mujeres), desplazando de la sucesión a su hermano Carlos María Isidro." },
+      { block: 1, q: "¿Qué territorios conservó España en ultramar tras las independencias americanas de 1824?", opts: ["México y Perú", "Argentina y Chile", "Cuba, Puerto Rico y Filipinas", "Colombia y Venezuela"], ans: 2, exp: "Tras 1824, los únicos restos del imperio español en ultramar fueron Cuba, Puerto Rico y las islas Filipinas, perdidos en 1898." },
+
+      // BLOQUE 2: ISABEL II (8 PREGUNTAS)
+      { block: 2, q: "¿Cuál era el lema tradicionalista de los carlistas en las guerras del siglo XIX?", opts: ["Paz y pan", "Dios, Patria, Fueros, Rey", "Libertad, Igualdad, Fraternidad", "Escuela y despensa"], ans: 1, exp: "Los carlistas defendían el absolutismo monárquico, la preeminencia de la Iglesia católica y el mantenimiento de los fueros tradicionales." },
+      { block: 2, q: "¿Con qué acuerdo simbólico concluyó la Primera Guerra Carlista en 1839?", opts: ["Abrazo de Vergara", "Tratado de París", "Pacto de El Pardo", "Pacto de Ostende"], ans: 0, exp: "El Abrazo de Vergara (1839) entre el general liberal Espartero y el general carlista Maroto puso fin a la Primera Guerra Carlista." },
+      { block: 2, q: "¿Quién fue el principal líder político y militar del Partido Moderado durante el reinado de Isabel II?", opts: ["Baldomero Espartero", "Ramón María Narváez", "Pi y Margall", "Pablo Iglesias"], ans: 1, exp: "El general Ramón María Narváez lideró a los moderados durante la Década Moderada (1844–1854)." },
+      { block: 2, q: "¿Qué cuerpo de seguridad fue creado en 1844 durante la Década Moderada?", opts: ["La Milicia Nacional", "La Guardia Civil", "Los Mossos d'Esquadra", "La Policía Armada"], ans: 1, exp: "En 1844 el duque de Ahumada fundó la Guardia Civil con el objetivo de mantener el orden público y combatir el bandolerismo en el medio rural." },
+      { block: 2, q: "¿Qué tipo de sufragio defendían los liberales moderados de la Constitución de 1845?", opts: ["Sufragio universal femenino", "Sufragio censitario muy restringido", "Sufragio universal masculino", "Elección por sorteo"], ans: 1, exp: "Los moderados limitaban el derecho al voto a una pequeña minoría de grandes propietarios y contribuyentes (sufragio censitario restringido)." },
+      { block: 2, q: "¿Sobre qué bienes actuó principalmente la desamortización de Mendizábal en 1836?", opts: ["Sobre las tierras del clero regular y secular (Iglesia)", "Sobre las fábricas textiles", "Sobre los ferrocarriles", "Sobre las minas de carbón"], ans: 0, exp: "Mendizábal expropió y subastó los bienes eclesiásticos ('manos muertas') para financiar la guerra carlista y reducir la deuda pública." },
+      { block: 2, q: "¿Qué bienes afectó además la desamortización de Pascual Madoz en 1855?", opts: ["Los bienes comunales y de propios de los ayuntamientos", "Las colonias africanas", "Los palacios reales", "Los bancos privados"], ans: 0, exp: "La Desamortización General de Madoz (1855) afectó principalmente a las tierras comunales de los municipios, perjudicando a los campesinos más pobres." },
+      { block: 2, q: "¿Qué acuerdo firmaron progresistas, demócratas y republicanos en 1866 para destronar a Isabel II?", opts: ["Pacto de Ostende", "Pacto de Letrán", "Concordato de 1851", "Tratado de Valençay"], ans: 0, exp: "En el Pacto de Ostende (1866), la oposición acordó derrocar a Isabel II y convocar Cortes Constituyentes por sufragio universal." },
+
+      // BLOQUE 3: SEXENIO DEMOCRÁTICO (8 PREGUNTAS)
+      { block: 3, q: "¿Qué nombre recibió la revolución de septiembre de 1868 que destronó a Isabel II?", opts: ["La Vicalvarada", "La Gloriosa", "La Semana Trágica", "El Dos de Mayo"], ans: 1, exp: "La revolución de 1868, liderada por Prim, Serrano y Topete, fue conocida como 'La Gloriosa' y dio paso al Sexenio Democrático." },
+      { block: 3, q: "¿Qué avance histórico introdujo por primera vez la Constitución de 1869?", opts: ["El sufragio universal masculino directo y la libertad de cultos", "El voto femenino", "La abolición de la monarquía", "El sistema de partido único"], ans: 0, exp: "La Constitución de 1869 fue la primera plenamente democrática en España al reconocer el sufragio universal masculino y amplios derechos individuales." },
+      { block: 3, q: "¿Qué monarca extranjero fue elegido por las Cortes como rey de España en 1870?", opts: ["Amadeo I de Saboya", "Luis Felipe de Orleans", "Leopoldo de Hohenzollern", "José I Bonaparte"], ans: 0, exp: "A propuesta del general Prim, las Cortes eligieron al príncipe italiano Amadeo de Saboya, que reinó entre 1871 y 1873." },
+      { block: 3, q: "¿Qué hecho debilitó gravemente el reinado de Amadeo I antes incluso de llegar a Madrid?", opts: ["El asesinato de su principal valedor, el general Juan Prim", "La invasión francesa", "El Desastre del 98", "La muerte de Cánovas"], ans: 0, exp: "El general Prim fue asesinado en diciembre de 1870, dejando a Amadeo I sin su principal apoyo político en España." },
+      { block: 3, q: "¿Cuándo se proclamó la Primera República Española tras la abdicación de Amadeo I?", opts: ["11 de febrero de 1873", "14 de abril de 1931", "19 de marzo de 1812", "29 de diciembre de 1874"], ans: 0, exp: "Tras abdicar Amadeo I el 10 de febrero, el Congreso y el Senado proclamaron la Primera República el 11 de febrero de 1873." },
+      { block: 3, q: "¿Cuántos presidentes se sucedieron durante los once meses de la Primera República?", opts: ["Dos", "Cuatro (Figueras, Pi y Margall, Salmerón y Castelar)", "Seis", "Uno solo"], ans: 1, exp: "La extrema inestabilidad política provocó cuatro presidencias sucesivas en menos de un año: Figueras, Pi y Margall, Salmerón y Castelar." },
+      { block: 3, q: "¿Qué grave conflicto interno estalló en julio de 1873 en ciudades como Cartagena o Alcoy?", opts: ["La rebelión cantonal", "La Guerra de la Independencia", "El Motín de Aranjuez", "La Huelga de La Canadiense"], ans: 0, exp: "Los republicanos federales intransigentes proclamaron cantones independientes (destacando el de Cartagena), que tuvieron que ser sofocados por el ejército." },
+      { block: 3, q: "¿Qué general irrumpió en las Cortes en enero de 1874 poniendo fin a la República parlamentaria?", opts: ["General Manuel Pavía", "General Riego", "General Espartero", "General Weyler"], ans: 0, exp: "El 3 de enero de 1874 el general Pavía dio un golpe de Estado disolviendo las Cortes, paso previo a la restauración borbónica." },
+
+      // BLOQUE 4: RESTAURACIÓN Y CRISIS DEL 98 (8 PREGUNTAS)
+      { block: 4, q: "¿Quién fue el gran artífice político del sistema de la Restauración borbónica en 1875?", opts: ["Antonio Cánovas del Castillo", "Práxedes Mateo Sagasta", "Francisco Pi y Margall", "Joaquín Costa"], ans: 0, exp: "Cánovas del Castillo diseñó el sistema bipartidista de la Restauración para garantizar la estabilidad política tras décadas de pronunciamientos." },
+      { block: 4, q: "¿En qué consistía el «turno pacífico» durante la Restauración?", opts: ["Alternancia pactada en el poder entre el Partido Conservador y el Partido Liberal", "Elecciones libres cada mes", "Gobierno compartido con los carlistas", "Rotación entre militares y obispos"], ans: 0, exp: "Conservadores (Cánovas) y Liberales (Sagasta) se turnaban pacíficamente en el gobierno mediante elecciones previamente amañadas." },
+      { block: 4, q: "¿Qué nombre recibía la manipulación fraudulenta del recuento de votos durante la Restauración?", opts: ["Pucherazo", "Diktat", "Desamortización", "Pronunciamiento"], ans: 0, exp: "El 'pucherazo' consistía en alterar actas electorales, falsificar censos o hacer votar a fallecidos para asegurar la victoria del partido al que le tocaba gobernar." },
+      { block: 4, q: "¿Qué líder socialista fundó el PSOE en 1879 y el sindicato UGT en 1888?", opts: ["Pablo Iglesias", "Sabino Arana", "Prat de la Riba", "Francisco Largo Caballero"], ans: 0, exp: "Pablo Iglesias Posse fundó en Madrid el Partido Socialista Obrero Español (1879) y la Unión General de Trabajadores (1888)." },
+      { block: 4, q: "¿Quién fundó el Partido Nacionalista Vasco (PNV) en 1895?", opts: ["Sabino Arana", "Enric Prat de la Riba", "Valentí Almirall", "Ramón Nocedal"], ans: 0, exp: "Sabino Arana fundó el PNV en 1895 reivindicando los fueros y la identidad vasca." },
+      { block: 4, q: "¿Qué suceso sirvió de pretexto a Estados Unidos para declarar la guerra a España en 1898?", opts: ["La explosión del acorazado Maine en el puerto de La Habana", "La invasión de Filipinas", "El Abrazo de Vergara", "La Semana Trágica"], ans: 0, exp: "EE.UU. culpó a España del hundimiento fortuito del crucero Maine en La Habana (febrero de 1898) para intervenir en la guerra de Cuba." },
+      { block: 4, q: "¿Qué territorios perdió España tras firmar el Tratado de París en diciembre de 1898?", opts: ["Cuba, Puerto Rico y Filipinas (además de Guam)", "Ceuta y Melilla", "Canarias y Baleares", "Guinea Ecuatorial y Sahara"], ans: 0, exp: "Por el Tratado de París (1898), España renunció a Cuba y cedió Puerto Rico, Filipinas y Guam a Estados Unidos." },
+      { block: 4, q: "¿Qué movimiento intelectual encabezado por Joaquín Costa pidió modernizar España tras el Desastre del 98?", opts: ["Regeneracionismo", "Carlismo", "Afrancesamiento", "Cantonalismo"], ans: 0, exp: "El Regeneracionismo denunció la corrupción del caciquismo y propuso reformas educativas y económicas ('escuela y despensa') para sacar a España del atraso." }
+    ];
+
+    // ==========================================
+    // 4. LÓGICA DE NAVEGACIÓN Y ESTUDIO
+    // ==========================================
+    let currentBlockIndex = 0;
+
+    function selectBlock(index) {
+      currentBlockIndex = index;
+      const block = blocksData[index];
+
+      // Actualizar tarjetas de la línea del tiempo
+      document.querySelectorAll('.timeline-card').forEach((btn, idx) => {
+        if (idx === index) {
+          btn.className = "timeline-card text-left p-3.5 rounded-xl border-2 border-amber-500 bg-amber-50/80 dark:bg-amber-950/40 shadow-sm transition-all cursor-pointer";
+          btn.querySelector('span:first-child').className = "text-xs font-extrabold text-amber-700 dark:text-amber-400 block";
+        } else {
+          btn.className = "timeline-card text-left p-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/50 hover:border-amber-400 transition-all cursor-pointer";
+          btn.querySelector('span:first-child').className = "text-xs font-extrabold text-slate-500 dark:text-slate-400 block";
+        }
+      });
+
+      // Renderizar el contenido del bloque (Imagen completa sin recortes + teoría)
+      const container = document.getElementById('block-content-container');
+      container.innerHTML = `
+        <article class="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl overflow-hidden fade-in">
+          <!-- Imagen de portada completa (sin recortar) -->
+          <div class="w-full bg-slate-900 flex justify-center items-center overflow-hidden border-b border-slate-200 dark:border-slate-800">
+            <img src="${block.image}" alt="${block.imageAlt}" class="w-full h-auto max-h-[620px] object-contain mx-auto block" onerror="this.parentElement.style.display='none'">
+          </div>
+
+          <!-- Cabecera del bloque -->
+          <div class="p-6 sm:p-8 border-b border-slate-100 dark:border-slate-800 bg-gradient-to-r from-amber-50/60 via-white to-white dark:from-slate-800/80 dark:via-slate-900 dark:to-slate-900">
+            <span class="inline-block text-xs font-bold uppercase tracking-wider text-amber-800 dark:text-amber-300 bg-amber-100 dark:bg-amber-950/80 px-3 py-1 rounded-full mb-2">
+              ${block.badge}
+            </span>
+            <h2 class="text-2xl sm:text-3xl font-serif font-bold text-slate-900 dark:text-white leading-tight">${block.title}</h2>
+            <p class="text-slate-600 dark:text-slate-400 mt-1.5 text-sm sm:text-base">${block.subtitle}</p>
+          </div>
+
+          <!-- Dato clave destacado -->
+          <div class="mx-6 sm:mx-8 mt-6 p-4 sm:p-5 rounded-2xl bg-amber-50/90 dark:bg-amber-950/40 border-l-4 border-amber-500">
+            <h3 class="font-bold text-amber-900 dark:text-amber-300 text-sm sm:text-base flex items-center gap-2">
+              <i class="fa-solid fa-star text-amber-500"></i>
+              <span>${block.keyFact.title}</span>
+            </h3>
+            <p class="text-sm text-amber-950/85 dark:text-amber-100/90 mt-1 leading-relaxed">${block.keyFact.text}</p>
+          </div>
+
+          <!-- Secciones teóricas -->
+          <div class="p-6 sm:p-8 space-y-6">
+            ${block.sections.map(sec => `
+              <div class="p-5 rounded-2xl bg-slate-50/80 dark:bg-slate-800/50 border border-slate-200/70 dark:border-slate-700/70 space-y-3">
+                <h3 class="text-lg font-extrabold text-slate-900 dark:text-white flex items-center gap-2.5">
+                  <span class="w-8 h-8 rounded-xl bg-amber-100 dark:bg-amber-900/60 text-amber-700 dark:text-amber-300 flex items-center justify-center shrink-0 text-sm">
+                    <i class="fa-solid ${sec.icon}"></i>
+                  </span>
+                  <span>${sec.heading}</span>
+                </h3>
+                <ul class="space-y-2.5 text-sm sm:text-base text-slate-700 dark:text-slate-300 leading-relaxed pl-1">
+                  ${sec.content.map(item => `
+                    <li class="flex items-start gap-2.5">
+                      <span class="w-1.5 h-1.5 rounded-full bg-amber-500 mt-2.5 shrink-0"></span>
+                      <span>${item}</span>
+                    </li>
+                  `).join('')}
+                </ul>
+              </div>
+            `).join('')}
+          </div>
+        </article>
+      `;
+
+      document.getElementById('prev-block-btn').disabled = (index === 0);
+      document.getElementById('next-block-btn').disabled = (index === blocksData.length - 1);
+    }
+
+    function navigateBlock(delta) {
+      const next = currentBlockIndex + delta;
+      if (next >= 0 && next < blocksData.length) {
+        selectBlock(next);
+        document.getElementById('section-teoria').scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    function switchMainSection(section) {
+      const teoria = document.getElementById('section-teoria');
+      const test = document.getElementById('section-test');
+      const tabTeoria = document.getElementById('tab-teoria');
+      const tabTest = document.getElementById('tab-test');
+
+      if (section === 'teoria') {
+        teoria.classList.remove('hidden');
+        test.classList.add('hidden');
+        tabTeoria.className = "flex-1 sm:flex-initial flex items-center justify-center gap-2 px-5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-amber-600 text-white shadow-sm cursor-pointer";
+        tabTest.className = "flex-1 sm:flex-initial flex items-center justify-center gap-2 px-5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:border-red-400 cursor-pointer";
+      } else {
+        teoria.classList.add('hidden');
+        test.classList.remove('hidden');
+        tabTest.className = "flex-1 sm:flex-initial flex items-center justify-center gap-2 px-5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-red-600 text-white shadow-sm cursor-pointer";
+        tabTeoria.className = "flex-1 sm:flex-initial flex items-center justify-center gap-2 px-5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:border-amber-400 cursor-pointer";
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // ==========================================
+    // 5. MOTOR DE CUESTIONARIOS (40 PREGUNTAS)
+    // ==========================================
+    let activeQuestions = [];
+    let currentQIndex = 0;
+    let correctCount = 0;
+    let wrongCount = 0;
+    let currentMode = 'all';
+    let failedBlocks = new Set();
+
+    function startBlockQuiz() {
+      switchMainSection('test');
+      startQuiz(currentBlockIndex);
+    }
+
+    function startQuiz(mode) {
+      currentMode = mode;
+      currentQIndex = 0;
+      correctCount = 0;
+      wrongCount = 0;
+      failedBlocks.clear();
+
+      if (mode === 'all') {
+        const shuffled = [...quizQuestions].sort(() => Math.random() - 0.5);
+        activeQuestions = shuffled.slice(0, 20);
+        document.getElementById('quiz-mode-label').textContent = "Examen General Aleatorio (20 preguntas)";
+      } else {
+        activeQuestions = quizQuestions.filter(item => item.block === mode);
+        document.getElementById('quiz-mode-label').textContent = blocksData[mode].badge;
+      }
+
+      document.getElementById('quiz-setup-panel').classList.add('hidden');
+      document.getElementById('quiz-results-panel').classList.add('hidden');
+      document.getElementById('quiz-active-panel').classList.remove('hidden');
+      document.getElementById('quiz-total-num').textContent = activeQuestions.length;
+
+      updateScoreBoard();
+      renderQuestion();
+    }
+
+    function renderQuestion() {
+      const item = activeQuestions[currentQIndex];
+      document.getElementById('quiz-current-num').textContent = currentQIndex + 1;
+      document.getElementById('question-block-badge').textContent = blocksData[item.block].badge;
+      document.getElementById('question-text').textContent = item.q;
+      document.getElementById('quiz-progress-bar').style.width = `${(currentQIndex / activeQuestions.length) * 100}%`;
+
+      const feedbackBox = document.getElementById('feedback-box');
+      feedbackBox.classList.add('hidden');
+      document.getElementById('next-question-btn').classList.add('hidden');
+
+      const optionsContainer = document.getElementById('options-container');
+      optionsContainer.innerHTML = item.opts.map((opt, idx) => `
+        <button onclick="checkAnswer(${idx})" id="opt-btn-${idx}" class="w-full text-left p-4 rounded-2xl border-2 border-slate-200 dark:border-slate-700 bg-slate-50/60 dark:bg-slate-800/60 hover:border-amber-500 hover:bg-amber-50/40 dark:hover:bg-slate-800 transition-all flex items-center gap-3 cursor-pointer">
+          <span class="w-7 h-7 rounded-lg bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-600 text-xs font-extrabold flex items-center justify-center shrink-0">
+            ${String.fromCharCode(65 + idx)}
+          </span>
+          <span class="text-sm sm:text-base font-medium text-slate-800 dark:text-slate-100">${opt}</span>
+        </button>
+      `).join('');
+    }
+
+    function checkAnswer(selectedIndex) {
+      const item = activeQuestions[currentQIndex];
+      const isCorrect = (selectedIndex === item.ans);
+
+      // Bloquear todos los botones
+      item.opts.forEach((_, idx) => {
+        const btn = document.getElementById(`opt-btn-${idx}`);
+        btn.disabled = true;
+        btn.classList.remove('hover:border-amber-500', 'hover:bg-amber-50/40', 'cursor-pointer');
+        if (idx === item.ans) {
+          btn.className = "w-full text-left p-4 rounded-2xl border-2 border-emerald-500 bg-emerald-50 dark:bg-emerald-950/50 flex items-center gap-3";
+        } else if (idx === selectedIndex && !isCorrect) {
+          btn.className = "w-full text-left p-4 rounded-2xl border-2 border-red-500 bg-red-50 dark:bg-red-950/50 flex items-center gap-3";
+        } else {
+          btn.classList.add('opacity-55');
+        }
+      });
+
+      const feedbackBox = document.getElementById('feedback-box');
+      const feedbackIcon = document.getElementById('feedback-icon');
+      const feedbackTitle = document.getElementById('feedback-title');
+      const feedbackExp = document.getElementById('feedback-explanation');
+
+      feedbackBox.classList.remove('hidden', 'border-emerald-300', 'bg-emerald-50/80', 'border-red-300', 'bg-red-50/80');
+
+      if (isCorrect) {
+        correctCount++;
+        feedbackBox.classList.add('border-emerald-400', 'bg-emerald-50/90', 'dark:bg-emerald-950/40');
+        feedbackIcon.innerHTML = '<i class="fa-solid fa-circle-check text-emerald-600"></i>';
+        feedbackTitle.className = "font-bold text-base text-emerald-800 dark:text-emerald-300";
+        feedbackTitle.textContent = "¡Respuesta correcta!";
+      } else {
+        wrongCount++;
+        failedBlocks.add(item.block);
+        feedbackBox.classList.add('border-red-400', 'bg-red-50/90', 'dark:bg-red-950/40');
+        feedbackIcon.innerHTML = '<i class="fa-solid fa-circle-xmark text-red-600"></i>';
+        feedbackTitle.className = "font-bold text-base text-red-800 dark:text-red-300";
+        feedbackTitle.textContent = "Respuesta incorrecta";
+      }
+
+      feedbackExp.className = "text-sm mt-1 leading-relaxed text-slate-700 dark:text-slate-300";
+      feedbackExp.textContent = item.exp;
+
+      updateScoreBoard();
+      document.getElementById('next-question-btn').classList.remove('hidden');
+    }
+
+    function updateScoreBoard() {
+      document.getElementById('score-correct').textContent = correctCount;
+      document.getElementById('score-wrong').textContent = wrongCount;
+    }
+
+    function nextQuestion() {
+      currentQIndex++;
+      if (currentQIndex < activeQuestions.length) {
+        renderQuestion();
+      } else {
+        showResults();
+      }
+    }
+
+    function showResults() {
+      document.getElementById('quiz-active-panel').classList.add('hidden');
+      document.getElementById('quiz-results-panel').classList.remove('hidden');
+
+      const grade = ((correctCount / activeQuestions.length) * 10).toFixed(1);
+      document.getElementById('final-grade').textContent = grade;
+      document.getElementById('final-correct').textContent = correctCount;
+      document.getElementById('final-total').textContent = activeQuestions.length;
+
+      const badgeIcon = document.getElementById('result-badge-icon');
+      const subtitle = document.getElementById('result-subtitle');
+
+      if (grade >= 8) {
+        badgeIcon.className = "w-16 h-16 rounded-2xl mx-auto flex items-center justify-center mb-4 text-2xl bg-emerald-100 text-emerald-600";
+        badgeIcon.innerHTML = '<i class="fa-solid fa-trophy"></i>';
+        subtitle.textContent = "¡Excelente dominio del siglo XIX español!";
+      } else if (grade >= 5) {
+        badgeIcon.className = "w-16 h-16 rounded-2xl mx-auto flex items-center justify-center mb-4 text-2xl bg-amber-100 text-amber-600";
+        badgeIcon.innerHTML = '<i class="fa-solid fa-award"></i>';
+        subtitle.textContent = "Buen trabajo. Repasa los fallos para alcanzar el sobresaliente.";
+      } else {
+        badgeIcon.className = "w-16 h-16 rounded-2xl mx-auto flex items-center justify-center mb-4 text-2xl bg-red-100 text-red-600";
+        badgeIcon.innerHTML = '<i class="fa-solid fa-book-open-reader"></i>';
+        subtitle.textContent = "Conviene releer los apuntes antes de volver a intentarlo.";
+      }
+
+      const recContainer = document.getElementById('recommendations-container');
+      if (failedBlocks.size === 0) {
+        recContainer.innerHTML = `<p class="text-sm font-bold text-emerald-800 dark:text-emerald-300"><i class="fa-solid fa-check-double mr-1.5"></i>¡Pleno! No has fallado ninguna pregunta.</p>`;
+      } else {
+        const list = Array.from(failedBlocks).map(bIdx => `<li>• <strong>${blocksData[bIdx].badge}:</strong> ${blocksData[bIdx].title}</li>`).join('');
+        recContainer.innerHTML = `
+          <h4 class="font-bold text-sm text-amber-900 dark:text-amber-300 mb-1.5"><i class="fa-solid fa-lightbulb mr-1.5"></i>Etapas recomendadas para repasar:</h4>
+          <ul class="text-xs sm:text-sm text-amber-950/85 dark:text-amber-100/90 space-y-1">${list}</ul>
+        `;
+      }
+    }
+
+    function retryCurrentQuiz() { startQuiz(currentMode); }
+
+    function resetQuizToMenu() {
+      document.getElementById('quiz-active-panel').classList.add('hidden');
+      document.getElementById('quiz-results-panel').classList.add('hidden');
+      document.getElementById('quiz-setup-panel').classList.remove('hidden');
+    }
+
+    // ==========================================
+    // 6. MODALES, MODO OSCURO Y PROGRESO
+    // ==========================================
+    function openModal(id) { document.getElementById(id).classList.remove('hidden'); }
+    function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
+
+    function toggleDarkMode() {
+      document.documentElement.classList.toggle('dark');
+      const icon = document.getElementById('theme-icon');
+      icon.className = document.documentElement.classList.contains('dark') ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+    }
+
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      document.getElementById('reading-progress').style.width = pct + '%';
+    });
+
+    // Inicializar glosario y primer bloque al cargar
+    document.getElementById('glossary-list').innerHTML = glossaryData.map(g => `
+      <div class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200/70 dark:border-slate-700">
+        <strong class="text-indigo-700 dark:text-indigo-400">${g.term}:</strong>
+        <span class="text-slate-700 dark:text-slate-300">${g.def}</span>
+      </div>
+    `).join('');
+
+    selectBlock(0);
+  </script>
+</body>
+</html>
